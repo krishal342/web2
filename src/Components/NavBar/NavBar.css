@@ -1,0 +1,45 @@
+.button{
+    padding: 3px 18px;
+    border-radius: 5px;
+}
+.button:hover{
+    background-color: white;
+    color: black;
+    transition: 0.5s;
+    box-shadow: 0px 0px 10px rgb(219, 219, 219) ;
+}
+
+.navbar{
+    max-width: 1000px;
+}
+
+#menu-icon{
+    display: none;
+    position: relative;
+
+}
+.menu-list{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    color: white;
+    position: absolute;
+    top:50px;
+    right: 0;
+    gap: 10px;
+}
+
+#menu-icon p{
+    font-size: 25px;
+}
+
+@media (max-width:600px) {
+    .left{
+        display: none;
+    }
+
+    #menu-icon {
+        display: inline;
+    }
+}

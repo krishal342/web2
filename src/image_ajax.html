@@ -1,0 +1,387 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .image {
+            flex: 1;
+            /* background-color: red; */
+            height: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .image img {
+            border-radius: 0.5rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        }
+
+
+        .arrow {
+            color: white;
+            background-color: black;
+            padding: 0 10px 4px 10px;
+            font-size: xx-large;
+            /* border-radius: 50%; */
+            cursor: pointer;
+        }
+
+        .arrow:hover {
+            box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.4);
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="my-5 ">
+        <div class="flex w-[80%] mx-auto items-center gap-5">
+            <p class='arrow' onclick="preImage()">
+                &larr;
+            </p>
+            <div class="w-full flex gap-5 h-[300px]">
+                <div class="image">
+                    <img src="" alt="image" id="image1"/>
+                </div>
+                <div class="image">
+                    <img src="" alt="image" id="image2"/>
+                </div>
+            </div>
+            <p class='arrow' onclick="nextImage()">
+                &rarr;
+            </p>
+        </div>
+    </div>
+
+    <script>
+        let wildLife = [];
+        let wi1=0;
+        let wi2=1;
+        let scenery = [];
+        let si=0;
+
+        let image1 = document.getElementById('image1');
+        let image2 = document.getElementById('image2');
+        let res;
+
+        fetch('images.json')
+            .then(res => res.json())
+            .then(data => {
+                 wildLife = data.wildLife;
+                 scenery = data.scenery;
+                //  console.log(wildLife);
+                displayImage();
+            })
+            .catch(err =>{
+                console.error(err);
+            });
+
+
+        function displayImage(){
+            image1.src = wildLife[wi1].image;
+            image2.src = wildLife[wi2 ].image;
+            
+        }
+
+        function nextImage(){
+            
+            wi1++;
+            if(wi1 === wildLife.length ){
+                wi1 = 0;
+            }
+          
+            image1.src = wildLife[wi1].image;
+            if(wi1 === wildLife.length -1 ){
+                wi2 = 0;
+            }
+            else{
+
+                wi2 = wi1 + 1;
+            }
+
+            image2.src = wildLife[wi2].image;
+        }
+
+        function preImage(){
+            wi1 --;
+            if(wi1 === -1){
+                wi1 = wildLife.length - 1;
+            }
+
+            image1.src = wildLife[wi1].image;
+
+            if(wi1 === 4){
+                wi2 = 0;
+            }
+            else{
+
+                wi2 = wi1 + 1;
+            }
+            image2.src = wildLife[wi2].image;
+        }
+
+
+
+
+    </script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wildlife Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            text-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+        }
+
+        .carousel-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .arrow {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(168, 85, 247, 0.3);
+            color: #a855f7;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .arrow:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(168, 85, 247, 0.6);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+            transform: scale(1.05);
+        }
+
+        .arrow:active {
+            transform: scale(0.95);
+        }
+
+        .images-container {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            height: 400px;
+        }
+
+        .image-wrapper {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px -10px rgba(168, 85, 247, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .image-wrapper:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 60px -10px rgba(168, 85, 247, 0.5);
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .image-wrapper:hover img {
+            transform: scale(1.1);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 24px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 70%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-wrapper:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .image-title {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .image-category {
+            color: #a855f7;
+            font-size: 0.875rem;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .images-container {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .image-wrapper {
+                height: 300px;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+                margin-bottom: 30px;
+            }
+        }
+
+        .loading {
+            text-align: center;
+            color: #ffffff;
+            font-size: 1.5rem;
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Wildlife Gallery</h1>
+        <div class="carousel-wrapper">
+            <button class="arrow" onclick="prevImage()" aria-label="Previous images">
+                ←
+            </button>
+            
+            <div class="images-container">
+                <div class="image-wrapper">
+                    <img id="image1" src="" alt="Wildlife">
+                    <div class="image-overlay">
+                        <div class="image-title" id="title1"></div>
+                        <div class="image-category">Wildlife</div>
+                    </div>
+                </div>
+                <div class="image-wrapper">
+                    <img id="image2" src="" alt="Wildlife">
+                    <div class="image-overlay">
+                        <div class="image-title" id="title2"></div>
+                        <div class="image-category">Wildlife</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="arrow" onclick="nextImage()" aria-label="Next images">
+                →
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let wildLife = [];
+        let currentIndex = 0;
+        let isAnimating = false;
+
+        const image1 = document.getElementById('image1');
+        const image2 = document.getElementById('image2');
+        const title1 = document.getElementById('title1');
+        const title2 = document.getElementById('title2');
+
+        // Fetch images from JSON
+        fetch('/public/images.json')
+            .then(res => res.json())
+            .then(data => {
+                wildLife = data.wildLife;
+                displayImages();
+            })
+            .catch(err => {
+                console.error('Error loading images:', err);
+            });
+
+        function displayImages() {
+            if (wildLife.length === 0) return;
+
+            const index1 = currentIndex;
+            const index2 = (currentIndex + 1) % wildLife.length;
+
+            image1.src = wildLife[index1].image;
+            title1.textContent = wildLife[index1].title;
+
+            image2.src = wildLife[index2].image;
+            title2.textContent = wildLife[index2].title;
+        }
+
+        function nextImage() {
+            if (isAnimating || wildLife.length === 0) return;
+            isAnimating = true;
+
+            currentIndex = (currentIndex + 1) % wildLife.length;
+            displayImages();
+
+            setTimeout(() => {
+                isAnimating = false;
+            }, 400);
+        }
+
+        function prevImage() {
+            if (isAnimating || wildLife.length === 0) return;
+            isAnimating = true;
+
+            currentIndex = (currentIndex - 1 + wildLife.length) % wildLife.length;
+            displayImages();
+
+            setTimeout(() => {
+                isAnimating = false;
+            }, 400);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'ArrowRight') nextImage();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+
+
+@media (max-width:770px){
+   .about-box{
+    flex-direction: column;
+   }
+   .about-image{
+    width: 65%;
+   }
+}
+
+@media(max-width:450px){
+    .about-image{
+        width: 100%;
+    }
+}

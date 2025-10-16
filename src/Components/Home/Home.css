@@ -1,0 +1,41 @@
+.hero{
+    background: linear-gradient(rgba(21, 21, 27, 0.863),rgba(33, 32, 43, 0.575)),url('../../assets/hero.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+
+@media(max-width:770px){
+
+    .hero div{
+        gap: 10px;
+    }
+    
+    .hero h1{
+        font-size: 20px;
+    }
+    
+    .hero p{
+        font-size: 15px;
+    }
+}
+
+@media (max-width:450px) {
+
+    .hero div{
+        height: 70vh;
+    }
+    .hero h1{
+        font-size:18px;
+    }
+    .hero p{
+        font-size: 13px;
+    }
+    .p2{
+        display: none;
+    }
+}
