@@ -1,36 +1,36 @@
 {
     "wildLife":[
         {
-            "image":"/src/assets/wildLife/wl1.jpg"
+            "image":"../../../public/wildLife/wl1.jpg"
         },
         {
-            "image":"/src/assets/wildLife/wl2.jpg"
+            "image":"../../../public/wildLife/wl2.jpg"
         },
         {
-            "image":"/src/assets/wildLife/wl3.jpg"
+            "image":"../../../public/wildLife/wl3.jpg"
         },
         {
-            "image":"/src/assets/wildLife/wl4.jpg"
+            "image":"../../../public/wildLife/wl4.jpg"
         },
         {
-            "image":"/src/assets/wildLife/wl5.jpg"
+            "image":"../../../public/wildLife/wl5.jpg"
         }
     ],
     "scenery":[
         {
-            "image":"/src/assets/scenery/s1.jpg"
+            "image":"../../../public/scenery/s1.jpg"
         },
         {
-            "image":"/src/assets/scenery/s2.jpg"
+            "image":"../../../public/scenery/s2.jpg"
         },
         {
-            "image":"/src/assets/scenery/s3.jpg"
+            "image":"../../../public/scenery/s3.jpg"
         },
         {
-            "image":"/src/assets/scenery/s4.jpg"
+            "image":"../../../public/scenery/s4.jpg"
         },
         {
-            "image":"/src/assets/scenery/s5.jpg"
+            "image":"../../../public/scenery/s5.jpg"
         }
     ]
 }
