@@ -18,6 +18,7 @@ function Home() {
         })
     }, [])
 
+    // "wildLife/wl1.jpg","wildLife/wl2.jpg","wildLife/wl3.jpg","wildLife/wl4.jpg","wildLife/wl5.jpg"
     let [wildLife,setWildLife] = React.useState([]);
     let [scenery,setScenery] = React.useState([]);
 
@@ -32,17 +33,15 @@ function Home() {
             .catch(err => {
                 console.error(err);
             });
+
     },[])
 
-    window.addEventListener("resize",()=>{
-        console.log(window.innerHeight,window.innerWidth);
-    })
 
 
 
     return (
         <div className="">
-            <div className={`z-10 absolute w-full fixed ${navBgColor ? "bg-black" : ""}`}>
+            <div className={`z-10  w-full fixed ${navBgColor ? "bg-black" : ""}`}>
                 <NavBar />
             </div>
             <div className="hero">

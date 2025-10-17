@@ -5,12 +5,10 @@ import Contact from "./Components/Contact/Contact";
 function App(){
   return(
     <div>
-      <Router>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
-      </Router>
 
     </div>
   );

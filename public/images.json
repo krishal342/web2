@@ -1,36 +1,36 @@
 {
     "wildLife":[
         {
-            "image":"/src/assets/wildLife/wl1.jpg"
+            "image":"wildLife/wl1.jpg"
         },
         {
-            "image":"/src/assets/wildLife/wl2.jpg"
+            "image":"wildLife/wl2.jpg"
         },
         {
-            "image":"/src/assets/wildLife/wl3.jpg"
+            "image":"wildLife/wl3.jpg"
         },
         {
-            "image":"/src/assets/wildLife/wl4.jpg"
+            "image":"wildLife/wl4.jpg"
         },
         {
-            "image":"/src/assets/wildLife/wl5.jpg"
+            "image":"wildLife/wl5.jpg"
         }
     ],
     "scenery":[
         {
-            "image":"/src/assets/scenery/s1.jpg"
+            "image":"scenery/s1.jpg"
         },
         {
-            "image":"/src/assets/scenery/s2.jpg"
+            "image":"scenery/s2.jpg"
         },
         {
-            "image":"/src/assets/scenery/s3.jpg"
+            "image":"scenery/s3.jpg"
         },
         {
-            "image":"/src/assets/scenery/s4.jpg"
+            "image":"scenery/s4.jpg"
         },
         {
-            "image":"/src/assets/scenery/s5.jpg"
+            "image":"scenery/s5.jpg"
         }
     ]
 }
